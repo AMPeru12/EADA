@@ -1,0 +1,19 @@
+flowchart TB
+  A["<b>0. Ingesta</b><br/>Cola FIFO (deque)<br/>REES46 + stream sintético"] --> B["<b>1. Preprocesamiento</b><br/>Timsort + búsqueda binaria<br/>inválidos · duplicados · tardíos"]
+  B --> C["<b>2. Priorización</b><br/>Min-Heap<br/>alerta › express › estándar › programada"]
+  C --> F["<b>6. Filtrado probabilístico</b><br/>Bloom Filter + Count-Min Sketch<br/>lista negra · intensidad · pagos rechazados"]
+  F -- "alerta verificada" --> C
+  F --> D["<b>3. Almacenamiento</b><br/>Hash table + stock · CSR · LRU"]
+  D --> E["<b>4. Índice B+Tree</b><br/>(categoría, precio)<br/>actualizado por evento"]
+  D -- "micro-lote" --> G["<b>5. KD-Tree + KNN exacto</b><br/>atributos del producto"]
+  D -- "micro-lote" --> H["<b>7. Similitud aproximada</b><br/>MinHash+LSH (sesiones)<br/>HNSW (embeddings SVD)"]
+  D -- "micro-lote" --> I["<b>8. Grafo de co-compra</b><br/>PageRank / PPR<br/>Louvain vs Label Propagation"]
+  E --> J["<b>9. Servicio</b><br/>Trie (búsquedas reales)<br/>Top‑K · recomendaciones<br/>alertas · dashboard"]
+  G --> J
+  H --> J
+  I --> J
+  F -- "búsquedas" --> J
+  classDef fija fill:#DCE6F2,stroke:#1F3864,stroke-width:2px;
+  classDef base fill:#F2F2F2,stroke:#7F7F7F;
+  class F,H,I fija;
+  class A,B,C,D,E,G,J base;
