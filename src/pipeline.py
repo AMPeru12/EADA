@@ -294,7 +294,7 @@ class Pipeline:
     def __init__(self, entidades_lista_negra, stock_inicial=None, cfg=None):
         self.cfg = {"tam_lote": 10_000, "capacidad_cola": 50_000, "capacidad_lru": 10_000,
                     "umbral_cart": 18, "umbral_compra": 6, "umbral_rechazos": 3, "ventana_seg": 600,
-                    "refresco_eventos": 1_000_000, "min_sesiones_lsh": 5, "num_perm": 128, "bandas_lsh": 64,
+                    "refresco_eventos": 1_000_000, "min_sesiones_lsh": 5, "num_perm": 256, "bandas_lsh": 128,
                     "max_hnsw": 5_000, "dim_svd": 32, "semillas_estabilidad": 10, **(cfg or {})}
         c = self.cfg
         self.cola = ColaIngesta(c["capacidad_cola"])
@@ -306,7 +306,7 @@ class Pipeline:
         self.trie = Trie()
         self.busquedas = TopK()
         self.minhash = MinHash(c["num_perm"])
-        self.lsh = LSH(c["num_perm"], c["bandas_lsh"])
+        self.lsh = LSH(c["num_perm"], c["bandas_lsh"])   # 128 bandas × 2 filas: umbral ≈ 0.088 (elegido en el paso 5.3)
         self.alertas = []
         self.atendidos_por_nivel = Counter()
         self.tiempos = Counter()
