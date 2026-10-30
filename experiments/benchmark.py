@@ -139,7 +139,8 @@ def kd_vs_bruta(n, reps, dim=4):
 
 
 def lsh_vs_bruta(n, reps, max_bruta=3000, n_muestra=300):
-    """Misma configuración que el pipeline: 128 permutaciones, 64 bandas × 2 filas.
+    """Misma configuración que el pipeline: 256 permutaciones, 128 bandas × 2 filas.
+    Pares similares: Jaccard ≥ 0.125, el mismo criterio del paso 5.3 de Colab.
     Hasta max_bruta conjuntos se comparan todos los pares (O(n²)). Para n mayor, la precisión y
     el recall se estiman con n_muestra conjuntos consultados contra todos los demás (O(n_muestra·n))."""
     rng = np.random.default_rng(SEED)
@@ -148,15 +149,15 @@ def lsh_vs_bruta(n, reps, max_bruta=3000, n_muestra=300):
     for i in range(n):  # grupos de 5 conjuntos parecidos (variaciones de una base)
         b = base[i // 5]
         conjuntos.append({x for x in b if rng.random() > 0.2} | set(rng.integers(0, 50_000, 3).tolist()))
-    mh = MinHash(128)
+    mh = MinHash(256)
     def construir():
-        l = LSH(128, 64)
+        l = LSH(256, 128)
         for i, s_ in enumerate(conjuntos): l.insertar(i, mh.firma(s_))
         return l
     r = max(1, reps_para(n, reps) // 10)
     ml, l = memoria_pico(construir)
     fila("minhash_lsh", "construir", n, r, *medir(construir, r), ml)
-    umbral = round(l.umbral(), 3)
+    umbral = 0.125
     consultas = range(n) if n <= max_bruta else rng.choice(n, n_muestra, replace=False).tolist()
     evaluacion = "todos los pares" if n <= max_bruta else f"muestra de {n_muestra} consultas"
     t = time.perf_counter()
