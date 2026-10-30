@@ -143,7 +143,7 @@ class FiltroFraude:
     Ninguna operación se bloquea solo por la estructura probabilística: los positivos se
     verifican contra la fuente exacta (lista negra / registro de eventos recientes)."""
 
-    def __init__(self, entidades, ventana_seg=600, umbral_cart=15, umbral_compra=5, umbral_rechazos=3, tasa_fp=0.01):
+    def __init__(self, entidades, ventana_seg=600, umbral_cart=18, umbral_compra=6, umbral_rechazos=3, tasa_fp=0.01):
         self.exactas = set(entidades)                      # fuente exacta (en producción: BD)
         self.bloom = BloomFilter(max(1, len(self.exactas)), tasa_fp)
         for e in self.exactas:
@@ -293,7 +293,7 @@ class Almacen:
 class Pipeline:
     def __init__(self, entidades_lista_negra, stock_inicial=None, cfg=None):
         self.cfg = {"tam_lote": 10_000, "capacidad_cola": 50_000, "capacidad_lru": 10_000,
-                    "umbral_cart": 15, "umbral_compra": 5, "umbral_rechazos": 3, "ventana_seg": 600,
+                    "umbral_cart": 18, "umbral_compra": 6, "umbral_rechazos": 3, "ventana_seg": 600,
                     "refresco_eventos": 1_000_000, "min_sesiones_lsh": 5, "num_perm": 128, "bandas_lsh": 64,
                     "max_hnsw": 5_000, "dim_svd": 32, "semillas_estabilidad": 10, **(cfg or {})}
         c = self.cfg
