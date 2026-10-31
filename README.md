@@ -110,6 +110,15 @@ El pipeline imprime la traza de una compra express a través de las 10 etapas y 
   otras configuraciones y muestra cuál cumple recall ≥ 0.8.
 - **HNSW:** embeddings SVD de 32 dimensiones, M = 16, efConstruction = 100.
 
+Participación Grupo 3 Exposicion
+
+Javier Guerra Blanco,  Etapa 6: Filtrado probabilistico, Etapa 7 similitud aproximada, Etapa 8 y 9 Grafos de compra y servicio 
+Armando Mesias Araujo, Dataset y datos sinteticos, supuestos de operación del pipeline
+Brayan Quispe Montoya, Etapas del 0-2 y 3. 5: Ingesta, pre procesamiento, priorizacion, Almacenamiento, Indice Principal, Multidimensional
+Raúl Pacheco Huanca, Experimentos y conclusiones
+
+Todos: Implementación en python (Google Colab) y pruebas.
+
 
 ## Referencias principales
 
