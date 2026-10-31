@@ -111,10 +111,6 @@ El pipeline imprime la traza de una compra express a través de las 10 etapas y 
 - **HNSW:** embeddings SVD de 32 dimensiones, M = 16, efConstruction = 100.
 
 
-## Informe
-
-`docs/Proyecto_Final_[NombreGrupo].pdf` (borrador editable en `docs/Proyecto_Final_NombreGrupo.docx`). Presentación: `docs/Exposicion_Proyecto_EDA.pptx`.
-
 ## Referencias principales
 
 Bloom (1970) · Cormode y Muthukrishnan (2005) · Broder (1997) · Indyk y Motwani (1998) · Malkov y Yashunin (2020) ·
