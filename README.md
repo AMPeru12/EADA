@@ -110,14 +110,6 @@ El pipeline imprime la traza de una compra express a través de las 10 etapas y 
   otras configuraciones y muestra cuál cumple recall ≥ 0.8.
 - **HNSW:** embeddings SVD de 32 dimensiones, M = 16, efConstruction = 100.
 
-## Roles y contribución individual
-
-| Integrante | Responsable principal | Aporte concreto |
-|---|---|---|
-| [Integrante 1] | Etapas 0, 1 y 2 · integración del pipeline | [completar] |
-| [Integrante 2] | Etapas 3, 4, 5 y 9 (servicio y dashboard) | [completar] |
-| [Integrante 3] | Etapa 6 (Bloom Filter, Count-Min Sketch) · MinHash+LSH | [completar] |
-| [Integrante 4] | HNSW · etapa 8 (grafo) · experimentos | [completar] |
 
 ## Informe
 
