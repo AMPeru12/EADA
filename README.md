@@ -46,6 +46,13 @@ Todas las estructuras son implementaciones propias. `networkx` se usa solo para 
 └── data/                      # (no versionado) stream y lista negra
 ```
 
+## Abrir el dashboard
+
+**[Abrir dashboard local](http://127.0.0.1:8501)** · Requiere iniciar primero el servidor en tu computadora.
+
+Este enlace apunta al equipo de quien lo abre. El README no inicia Python ni publica la aplicación. Para usar el panel, descarga el proyecto y abre una terminal en la carpeta que contiene `requirements.txt`, `src/` y `dashboard/`.
+
+
 ## Cómo ejecutarlo
 
 **En Google Colab:** abre `notebooks/00_colab_paso_a_paso.ipynb`. Ejecuta todo el proyecto en orden (datos, pruebas, pipeline, comparación de algoritmos, escalabilidad y subida a GitHub).
